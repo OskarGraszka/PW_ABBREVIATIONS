@@ -27,14 +27,14 @@ def TakeColumnRect(self, feedback, sheet):
         FirstColumnRect = QgsRectangle(QgsPointXY(x1,y2),QgsPointXY(x2,y1))
         SecondColumnRect = QgsRectangle(QgsPointXY(x2,y2),QgsPointXY(x3,y1))
 ```
-![screen](images/columns.png)
+![columns](images/columns.png)
 
 The algorithm recognises two features as lying in the same row of text if the differnce of y coordinates of both (<font color="green">a</font>) is less than half of feature height (<font color="green">b</font>).
 
 ```Python
 if element.geometry().boundingBox().height()/2>(y_upper-element.geometry().centroid().asPoint().y()):
 ```
-![screen](images/row.png)
+![row](images/row.png)
 
 ## Parameters
 <dd>
