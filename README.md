@@ -107,7 +107,7 @@ At the very end, the algorithm changes all of the first letters in the words to 
 <br><b>Characters to remove on edges</b>
 <dd>If input text starts or ends with character from the list, this character will be remove from text.</dd> 
 <br><b>Resolve first</b>
-<dd><i>Changes first letters in the words to capitals and the others to lower letters.</dd> 
+<dd>Changes first letters in the words to capitals and the others to lower letters.</dd> 
 <br><b>Resolve capitalization</b>
 <dd>Recognizes words with first letter not matching to its neighborhood and changes it to proper letter.
 <br>(Alphabetical order of text words is necassery)</dd>
