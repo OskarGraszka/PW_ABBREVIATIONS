@@ -44,7 +44,35 @@ User can choose characters from the predefined list.
 CharsList = ['.',',',':',';','/','\\','"',"'",'|','_','*','!','^','~','+','@','#','$','&','(',')',' ','0','1','2','3','4','5','6','7','8','9','-']
 ```
 ```Cekcyn Polski,``` -> ```Cekcyn Polski```
+
 ```|Cekinówka``` -> ```Cekinówka```
+
+### Expanding abbreviations
+
+The algorithm recognises abbreaviations (words shorter than 3 characters in this case) and replaces them by previous word longer than 3 characters. Notice that words are sorted already in reading order.
+
+```Python
+self.if_short(string, 2)
+```
+
+![expand](images/expand.png)
+
+```Cegielnia``` -> ```Cegielnia```
+
+```C``` -> ```Cegielnia```
+
+```C``` -> ```Cegielnia```
+
+```C``` -> ```Cegielnia```
+
+```C``` -> ```Cegielnia```
+
+```C``` -> ```Cegielnia```
+
+```C``` -> ```Cegielnia```
+
+### Resolving first character
+
 
 
 ## Parameters
