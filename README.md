@@ -36,6 +36,17 @@ if element.geometry().boundingBox().height()/2>(y_upper-element.geometry().centr
 ```
 ![rows](images/rows.png)
 
+### Removing characters on edges
+
+If features are already sorted in reading order the algorithm deletes unwanted characters at the beginning and the end of word.
+User can choose characters from the predefined list.
+```Python
+CharsList = ['.',',',':',';','/','\\','"',"'",'|','_','*','!','^','~','+','@','#','$','&','(',')',' ','0','1','2','3','4','5','6','7','8','9','-']
+```
+```Cekcyn Polski,``` -> ```Cekcyn Polski```
+```|Cekinówka``` -> ```Cekinówka```
+
+
 ## Parameters
 <dd>
 <b>Input abbreviations layer</b>
