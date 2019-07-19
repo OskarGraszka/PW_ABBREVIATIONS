@@ -49,7 +49,7 @@ CharsList = ['.',',',':',';','/','\\','"',"'",'|','_','*','!','^','~','+','@','#
 
 ### Expanding abbreviations
 
-The algorithm recognises abbreaviations (words shorter than 3 characters in this case) and replaces them by previous word longer than 3 characters. Notice that words are sorted already in reading order.
+The algorithm recognises abbreaviations (words shorter than 3 characters in this case) and replaces them by last word longer than 3 characters. Notice that words are sorted already in reading order.
 
 ```Python
 self.if_short(string, 2)
@@ -73,7 +73,28 @@ self.if_short(string, 2)
 
 ### Resolving first character
 
+The algorithm analyses what letter is the most numerous in the neighbourhood of the word (entries lying before and after the word). After that script searches this letter in the group of capital letters at the beginning and cuts all previous letters.
+If the script doesn't find the letter (this most popular in the neighbourhood), replaces all of capital letters from the beginning by this letter.
+If the word doesn't start with the most popular letter in the neighbourhood and this is the lowercase, algorithm adds the most popular letter before the word. 
+If the word starts with the most popular letter in the neighbourhood and this is the lowercase, algorithm does nothing.
 
+```HCegielnia``` -> ```Cegielnia```
+
+```cegielnia``` -> ```Cegielnia```
+
+```egielnia``` -> ```Cegielnia```
+
+```IEegielnia``` -> ```Cegielnia```
+
+### Resolving capitalization
+
+At the very end, the algorithm changes all of the first letters in the words to capital letters and changes all the other letters to lowercase.
+
+```Cekcyn polski``` -> ```Cekcyn Polski```
+
+```Czechowice-dziedzice``` -> ```Czechowice-Dziedzice```
+
+```SkierNiewice``` -> ```Skierniewice```
 
 ## Parameters
 <dd>
