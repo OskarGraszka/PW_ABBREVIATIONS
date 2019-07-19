@@ -34,7 +34,7 @@ The algorithm recognises two features as lying in the same row of text if the di
 ```Python
 if element.geometry().boundingBox().height()/2>(y_upper-element.geometry().centroid().asPoint().y()):
 ```
-![row](images/row.png)
+![rows](images/rows.png)
 
 ## Parameters
 <dd>
