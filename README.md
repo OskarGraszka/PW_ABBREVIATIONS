@@ -4,6 +4,7 @@
 
 This algorithm expands abbreviations from input features; if text is recognized as abbreviation, the algorithm replaces it by last previous word in the text (in reading order). Additionally it changes first letters in the words to capitals and the others to lower. If words in the text are sorted in alphabetical order, the algorithm can recognize words with first letter not matching to its neighborhood and change it to proper letter. 
 
+PW_ABBREVIATIONS is dedicated especially for data from lexicons, dictionaries and encyclopaedias.
 ## Algorithm
 
 ### Reading order
@@ -112,4 +113,13 @@ At the very end, the algorithm changes all of the first letters in the words to 
 <dd>Recognizes words with first letter not matching to its neighborhood and changes it to proper letter.
 <br>(Alphabetical order of text words is necassery)</dd>
 <br><b>Output layer</b>
-<dd>Location of the output layer.</dd> 
+<dd>Location of the output layer.</dd>
+</dd>
+
+## See also
+
+PW_ABBREVIATIONS algorithm may process data obtained from theese scripts:
+
+[*PW_OCR*](https://github.com/OskarGraszka/PW_OCR)
+
+[*PW_OCR_ADVANCED*](https://github.com/OskarGraszka/PW_OCR_ADVANCED)
