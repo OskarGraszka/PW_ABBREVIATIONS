@@ -118,7 +118,7 @@ At the very end, the algorithm changes all of the first letters in the words to 
 
 ## See also
 
-PW_ABBREVIATIONS algorithm may process data obtained from theese scripts:
+PW_ABBREVIATIONS algorithm may process data obtained from these scripts:
 
 [*PW_OCR*](https://github.com/OskarGraszka/PW_OCR)
 
