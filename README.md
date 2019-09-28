@@ -30,7 +30,7 @@ def TakeColumnRect(self, feedback, sheet):
 ```
 ![columns](images/columns.png)
 
-The algorithm recognises two features as lying in the same row of text if the differnce of y coordinates of both (<font color="green">a</font>) is less than half of feature height (<font color="green">b</font>).
+The algorithm recognizes two features as lying in the same row of text if the differnce of y coordinates of both (<font color="green">a</font>) is less than half of feature height (<font color="green">b</font>).
 
 ```Python
 if element.geometry().boundingBox().height()/2>(y_upper-element.geometry().centroid().asPoint().y()):
@@ -50,7 +50,7 @@ CharsList = ['.',',',':',';','/','\\','"',"'",'|','_','*','!','^','~','+','@','#
 
 ### Expanding abbreviations
 
-The algorithm recognises abbreaviations (words shorter than 3 characters in this case) and replaces them by last word longer than 3 characters. Notice that words are sorted already in reading order.
+The algorithm recognizes abbreaviations (words shorter than 3 characters in this case) and replaces them by last word longer than 3 characters. Notice that words are sorted already in reading order.
 
 ```Python
 self.if_short(string, 2)

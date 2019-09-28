@@ -22,15 +22,13 @@ from qgis.core import (QgsProcessing,
                        )
 import processing
 
-class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
-    # Constants used to refer to parameters and outputs. They will be
-    # used when calling the algorithm from another algorithm, or when
-    # calling from the QGIS console.
+class PW_Abbreviations_Algorithm(QgsProcessingAlgorithm):
 
     INPUT = 'INPUT'
     INPUT_MATRIX = 'INPUT MATRIX'
     FIELD = 'FIELD'
     OUTPUT_FIELD = 'OUTPUT FIELD'
+    LIST = 'LIST'
     RESOLVE_CASE = 'RESOLVE CASE'
     RESOLVE_FIRST = 'RESOLVE FIRST'
     OUTPUT = 'OUTPUT'
@@ -39,7 +37,7 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
         return QCoreApplication.translate('Processing', string)
 
     def createInstance(self):
-        return ExampleProcessingAlgorithm()
+        return PW_Abbreviations_Algorithm()
 
     def name(self):
         return 'pw_abbreviations'
@@ -110,7 +108,7 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
             )
         )
         global CharsList
-        CharsList = ['.',',',':',';','/','\\','"',"'",'|','_','*','!','^','~','+','@','#','$','&','(',')',' ','0','1','2','3','4','5','6','7','8','9']
+        CharsList = ['.',',',':',';','/','\\','"',"'",'|','_','*','!','^','~','+','@','#','$','&','(',')',' ','0','1','2','3','4','5','6','7','8','9','-']
         global Checklist
         Checklist = []
         for i in range(0,len(CharsList),1):
@@ -118,7 +116,7 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
         
         self.addParameter(
             QgsProcessingParameterEnum(
-                'LIST',
+                self.LIST,
                 self.tr('Characters to remove on edges'),
                 options = CharsList,
                 allowMultiple = True,
@@ -233,7 +231,7 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
             feedback.pushCommandInfo('old: '+string)
             string = self.OnEachFeatureChars(feedback, string)
 
-            if self.if_short(string, 3):
+            if self.if_short(string, 2):#alternatively it could be a parameter
                 string = lastlong
             else:
                 if self.first: string = self.OnEachFeatureResolveFirst(feedback, string, feat, OrderedFeatures)
@@ -245,16 +243,27 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
             feedback.setProgressText(str(self.actual)+'/'+str(self.total) + '       ' +'id:  ' + str(feat.id()))
             feat[self.dest_field] = string
             self.sink.addFeature(feat, QgsFeatureSink.FastInsert)
-        return {'Resolved features': self.actual}
-    def if_short(self, string, minimum):
+        return {self.OUTPUT: dest_id}
+    def if_short(self, string, maximum):
         bool = True
-        for part in string.split():
-            if len(part)>minimum:
-                bool = False
+        if len(string)>maximum: bool = False
         if string == 'NULL': bool = True
         return bool
-    def most_frequent(self, List): 
-        return max(set(List), key = List.count)
+    def most_frequent(self, List):
+        '''returns most frquent first character, if it is not in list of characters to remove'''
+        char = ''
+        #rank of frequency
+        freq_rank = [{'char' : char, 'count' : List.count(char)} for char in List]#.sort(key = self.sortFreq)
+        freq_rank.sort(key = self.sortFreq)
+        for element in freq_rank:
+            if element['char'] not in self.CharsToRemove:
+                char = element['char']
+                break
+        print(freq_rank)
+        print('char: '+ char)
+        return char
+    def sortFreq(self,element):
+        return element['count'] * (-1)
     def OnEachFeatureResolveFirst(self, feedback, string, feat, featlist):
         coms = False
         m = 8
