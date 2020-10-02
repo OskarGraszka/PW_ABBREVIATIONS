@@ -74,7 +74,7 @@ self.if_short(string, 2)
 
 ### Resolving first character
 
-The algorithm analyses what letter is the most numerous in the neighbourhood of the word (entries lying before and after the word). After that script searches this letter in the group of capital letters at the beginning and cuts all previous letters.
+The algorithm analyses what letter is the most numerous in the neighbourhood of the word (headwords lying before and after the word). After that script searches this letter in the group of capital letters at the beginning and cuts all previous letters.
 If the script doesn't find the letter (this most popular in the neighbourhood), replaces all of capital letters from the beginning by this letter.
 If the word doesn't start with the most popular letter in the neighbourhood and this is the lowercase, algorithm adds the most popular letter before the word. 
 If the word starts with the most popular letter in the neighbourhood and this is the lowercase, algorithm does nothing.
