@@ -5,6 +5,14 @@
 This algorithm expands abbreviations from input features; if text is recognized as abbreviation, the algorithm replaces it by last previous word in the text (in reading order). Additionally it changes first letters in the words to capitals and the others to lower. If words in the text are sorted in alphabetical order, the algorithm can recognize words with first letter not matching to its neighborhood and change it to proper letter. 
 
 PW_ABBREVIATIONS is dedicated especially for data from lexicons, dictionaries and encyclopaedias.
+
+### Citing
+
+If usage of the script leads to a scientific publication, please acknowledge this fact by citing:
+
+<i>Graszka, O. (2021). Automatyzacja procesu rozpoznawania i weryfikacji nazw geograficznych ze źródeł historycznych na przykładzie Słownika geograficznego Królestwa Polskiego. W T. Epsztein (red.), Od Słownika geograficznego Królestwa Polskiego do map topograficznych Wojskowego Instytutu Geograficznego (s. 23–32).</i>
+
+
 ## Algorithm
 
 ### Reading order
